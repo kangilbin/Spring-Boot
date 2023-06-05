@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "org.example.CocococoProperties",
+      "name": "co",
+      "type": "org.example.CocococoProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "org.example.CocococoProperties",
+      "name": "co.name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.example.CocococoProperties",
+      "name": "co.type",
+      "type": "java.lang.String"
+    }
+  ]
+}

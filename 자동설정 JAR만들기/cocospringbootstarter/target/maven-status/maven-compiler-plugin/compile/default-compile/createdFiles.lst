@@ -1,0 +1,5 @@
+org\example\CocococoConfiguration.class
+org\example\Cocococo.class
+META-INF\spring-autoconfigure-metadata.properties
+META-INF\spring-configuration-metadata.json
+org\example\CocococoProperties.class
