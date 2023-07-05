@@ -1,17 +1,16 @@
-package com.example.demo.entity;
+package com.example.demo.account;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Objects;
 
 @Entity
-public class Account {
+public class AccountEntity {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String username;
-    private String password;
 
     public Long getId() {
         return id;
@@ -37,4 +36,5 @@ public class Account {
         this.password = password;
     }
 
+    private String password;
 }
