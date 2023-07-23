@@ -1,0 +1,14 @@
+#Eureka 서버가 웹서비스의 성격으로 실행되기 때문에 설정되는 port 번호
+server:
+  port: 8761
+
+#Spring Cloud에 각각의 Microservice에 고유의 ID를 부여
+spring:
+  application:
+    name: discoveryservice
+
+# 아래의 옵션은 기본적으로 true로 설정되어 Client 역할도 하게 된다. 서버의 역할만 하기 위해 false로 설정한다.
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
