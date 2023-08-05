@@ -1,0 +1,24 @@
+server:
+  port: 8000
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: apigatway-service
+  cloud:
+    gateway:
+      routes:
+        - id: first-service
+          uri: lb://MY-FIRST-SERVICE
+          predicates:
+            - Path=/first-service/**
+        - id: second-service
+          uri: lb://MY-SECOND-SERVICE # 기존의 http 프로토콜을 이용해 uri를 찾는게 아니라 Eureka server에서 클라이언트 요청 정보를 가져온다.
+          predicates:
+            - Path=/second-service/**
+
