@@ -21,4 +21,8 @@ spring:
           uri: lb://MY-SECOND-SERVICE # 기존의 http 프로토콜을 이용해 uri를 찾는게 아니라 Eureka server에서 클라이언트 요청 정보를 가져온다.
           predicates:
             - Path=/second-service/**
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
 
