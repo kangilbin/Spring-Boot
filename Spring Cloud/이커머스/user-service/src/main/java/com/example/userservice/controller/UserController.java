@@ -40,17 +40,7 @@ public class UserController {
         return env.getProperty("greeting.message");
     }
 
-    @PostMapping("/users")
-    public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user) {
-        ModelMapper mapper = new ModelMapper();
-        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        UserDto userDto = mapper.map(user, UserDto.class);
-        userService.createUser(userDto);
 
-        ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseUser); // 성공 코드 : 201 반환
-    }
 
     @GetMapping("/user")
     public ResponseEntity<List<ResponseUser>> getUsers() {
