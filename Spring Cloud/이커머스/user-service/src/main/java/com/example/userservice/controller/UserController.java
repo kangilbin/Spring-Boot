@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/")
 public class UserController {
 
     private Environment env;
@@ -30,7 +30,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/heath_check")
+    @GetMapping("/health_check")
     public String status() {
         return String.format("It's Working in User Service on PORT %s", env.getProperty("local.server.port"));
     }
@@ -40,9 +40,20 @@ public class UserController {
         return env.getProperty("greeting.message");
     }
 
+    @PostMapping("/users")
+    public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user) {
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
+        UserDto userDto = mapper.map(user, UserDto.class);
+        userService.createUser(userDto);
 
-    @GetMapping("/user")
+        ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
+    }
+
+    @GetMapping("/users")
     public ResponseEntity<List<ResponseUser>> getUsers() {
         Iterable<UserEntity> userList = userService.getUserByAll();
 
