@@ -41,8 +41,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     // 만들었던 인증 필터 사용
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
-        authenticationFilter.setAuthenticationManager(authenticationManager());
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(authenticationManager(), userService, env);
+        //authenticationFilter.setAuthenticationManager(authenticationManager()); 생성자를 통해 만들었으니 필요 x
 
         return authenticationFilter;
     }
@@ -53,4 +53,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         // 사용자가 전잘한 username, password 두개를 가지고 로그인 처리
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
+
+
 }
